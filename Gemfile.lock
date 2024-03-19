@@ -283,6 +283,7 @@ DEPENDENCIES
   rails (~> 7.1.2)
   rspec-rails (~> 6.1.0)
   rubocop (~> 1.62)
+  rubocop-factory_bot (~> 2.25)
   rubocop-rails (~> 2.24)
   rubocop-rspec (~> 2.27)
   shoulda-matchers (~> 6.2)
