@@ -1,0 +1,70 @@
+# This workflow uses actions that are not certified by GitHub.  They are
+# provided by a third-party and are governed by separate terms of service,
+# privacy policy, and support documentation.
+#
+# This workflow will install a prebuilt Ruby version, install dependencies, and
+# run tests and linters.
+name: "Ruby on Rails CI"
+on:
+  pull_request:
+    branches:
+      - '*'
+  push:
+    branches:
+      - main
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:11-alpine
+        ports:
+          - "5432:5432"
+        env:
+          POSTGRES_DB: liga_polo_test
+          POSTGRES_USER: rails
+          POSTGRES_PASSWORD: password
+    env:
+      RAILS_ENV: test
+      DATABASE_URL: "postgres://rails:password@localhost:5432/liga_polo_test"
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      # Add or replace dependency steps here
+      - name: Install Ruby and gems
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      # Add or replace database setup steps here
+      - name: Set up project
+        run: bin/setup
+      # Add or replace test runners here
+      - name: Run tests
+        run: bundle exec rails spec
+
+  lint:
+    runs-on: ubuntu-latest
+    env:
+      RAILS_ENV: test
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Install Ruby and gems
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      # Add or replace any other lints here
+      - name: Security audit dependencies
+        run: |
+          gem install bundler-audit
+          bundler-audit --update
+      - name: Security audit application code
+        run: |
+          gem install brakeman
+          brakeman -qA
+      - name: Lint Ruby files
+        run: bundle exec rubocop --parallel
+      - name: Check duplicated code
+        run: |
+          bundle exec flay -s -# > current_flay_output.txt
+          diff expected_flay_output.txt current_flay_output.txt
