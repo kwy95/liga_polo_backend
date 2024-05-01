@@ -10,9 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_01_200859) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_01_203018) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "assocs", force: :cascade do |t|
+    t.bigint "pessoa_id", null: false
+    t.bigint "clube_id", null: false
+    t.date "data_inicio", null: false
+    t.date "data_fim"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["clube_id"], name: "index_assocs_on_clube_id"
+    t.index ["pessoa_id"], name: "index_assocs_on_pessoa_id"
+  end
 
   create_table "clubes", force: :cascade do |t|
     t.string "nome", null: false
@@ -32,4 +43,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_01_200859) do
     t.index ["nome"], name: "index_pessoas_on_nome"
   end
 
+  add_foreign_key "assocs", "clubes"
+  add_foreign_key "assocs", "pessoas"
 end

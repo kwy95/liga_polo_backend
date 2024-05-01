@@ -1,2 +1,4 @@
-Total score (lower is better) = 0
+Total score (lower is better) = 40
 
+   20.00: spec/models/clube_spec.rb
+   20.00: spec/models/pessoa_spec.rb

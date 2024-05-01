@@ -24,6 +24,11 @@ RSpec.describe Pessoa do
     expect(pessoa).to be_valid
   end
 
+  describe 'Associações' do
+    it { is_expected.to have_many(:assocs).dependent(:destroy) }
+    it { is_expected.to have_many(:clubes).through(:assocs) }
+  end
+
   describe 'Validações' do
     it { is_expected.to validate_presence_of(:nome) }
     it { is_expected.to validate_exclusion_of(:eh_mtnb).in_array([nil]) }
