@@ -18,6 +18,9 @@
 class Pessoa < ApplicationRecord
   attribute :eh_mtnb, default: true
 
+  has_many :assocs, dependent: :destroy
+  has_many :clubes, through: :assocs
+
   validates :nome, presence: true
   validates :eh_mtnb, exclusion: [nil]
 end
