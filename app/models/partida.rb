@@ -22,5 +22,7 @@
 class Partida < ApplicationRecord
   belongs_to :fase
 
+  has_many :arbitragems, dependent: :destroy
+
   validates :ordem, uniqueness: { scope: :fase_id }
 end

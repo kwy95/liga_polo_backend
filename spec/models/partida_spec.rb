@@ -30,6 +30,7 @@ RSpec.describe Partida do
 
   describe 'Associações' do
     it { is_expected.to belong_to(:fase) }
+    it { is_expected.to have_many(:arbitragems).dependent(:destroy) }
   end
 
   describe 'Validações' do
