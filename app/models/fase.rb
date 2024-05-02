@@ -20,4 +20,6 @@
 #
 class Fase < ApplicationRecord
   belongs_to :evento
+
+  has_many :partidas, dependent: :destroy
 end
