@@ -21,6 +21,9 @@ class Pessoa < ApplicationRecord
   has_many :assocs, dependent: :destroy
   has_many :clubes, through: :assocs
   has_many :arbitragems, dependent: :destroy
+  has_many :particips, dependent: :destroy
+  has_many :equipes, through: :particips
+  has_many :partidas, through: :particips
 
   validates :nome, presence: true
   validates :eh_mtnb, exclusion: [nil]

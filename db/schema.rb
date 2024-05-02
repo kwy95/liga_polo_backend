@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_02_022844) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_02_030110) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -78,6 +78,19 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_02_022844) do
     t.index ["nome"], name: "index_ligas_on_nome", unique: true
   end
 
+  create_table "particips", force: :cascade do |t|
+    t.boolean "eh_coringa", default: false, null: false
+    t.bigint "pessoa_id", null: false
+    t.bigint "equipe_id", null: false
+    t.bigint "partida_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["equipe_id"], name: "index_particips_on_equipe_id"
+    t.index ["partida_id"], name: "index_particips_on_partida_id"
+    t.index ["pessoa_id", "equipe_id", "partida_id"], name: "index_particips_on_pessoa_id_and_equipe_id_and_partida_id", unique: true
+    t.index ["pessoa_id"], name: "index_particips_on_pessoa_id"
+  end
+
   create_table "partidas", force: :cascade do |t|
     t.integer "ordem"
     t.bigint "fase_id", null: false
@@ -113,6 +126,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_02_022844) do
   add_foreign_key "assocs", "pessoas"
   add_foreign_key "eventos", "ligas"
   add_foreign_key "fases", "eventos"
+  add_foreign_key "particips", "equipes"
+  add_foreign_key "particips", "partidas"
+  add_foreign_key "particips", "pessoas"
   add_foreign_key "partidas", "fases"
   add_foreign_key "tematicos", "equipes"
   add_foreign_key "tematicos", "eventos"
