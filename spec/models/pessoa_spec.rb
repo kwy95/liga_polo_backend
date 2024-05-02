@@ -27,6 +27,7 @@ RSpec.describe Pessoa do
   describe 'Associações' do
     it { is_expected.to have_many(:assocs).dependent(:destroy) }
     it { is_expected.to have_many(:clubes).through(:assocs) }
+    it { is_expected.to have_many(:arbitragems).dependent(:destroy) }
   end
 
   describe 'Validações' do

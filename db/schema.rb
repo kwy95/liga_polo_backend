@@ -10,9 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_02_015524) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_02_022844) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "arbitragems", force: :cascade do |t|
+    t.string "type"
+    t.bigint "partida_id", null: false
+    t.bigint "pessoa_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["partida_id", "pessoa_id"], name: "index_arbitragems_on_partida_id_and_pessoa_id", unique: true
+    t.index ["partida_id"], name: "index_arbitragems_on_partida_id"
+    t.index ["pessoa_id"], name: "index_arbitragems_on_pessoa_id"
+  end
 
   create_table "assocs", force: :cascade do |t|
     t.bigint "pessoa_id", null: false
@@ -96,6 +107,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_02_015524) do
     t.index ["evento_id"], name: "index_tematicos_on_evento_id", unique: true
   end
 
+  add_foreign_key "arbitragems", "partidas"
+  add_foreign_key "arbitragems", "pessoas"
   add_foreign_key "assocs", "clubes"
   add_foreign_key "assocs", "pessoas"
   add_foreign_key "eventos", "ligas"
