@@ -24,6 +24,9 @@ RSpec.describe Equipe do
 
   describe 'Associações' do
     it { is_expected.to have_many(:tematicos).dependent(:destroy) }
+    it { is_expected.to have_many(:particips).dependent(:destroy) }
+    it { is_expected.to have_many(:pessoas).through(:particips) }
+    it { is_expected.to have_many(:partidas).through(:particips) }
   end
 
   describe 'Validações' do

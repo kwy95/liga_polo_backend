@@ -23,6 +23,9 @@ class Partida < ApplicationRecord
   belongs_to :fase
 
   has_many :arbitragems, dependent: :destroy
+  has_many :particips, dependent: :destroy
+  has_many :equipes, through: :particips
+  has_many :jogadores, through: :particips, source: :pessoa
 
   validates :ordem, uniqueness: { scope: :fase_id }
 end

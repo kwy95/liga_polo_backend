@@ -28,6 +28,9 @@ RSpec.describe Pessoa do
     it { is_expected.to have_many(:assocs).dependent(:destroy) }
     it { is_expected.to have_many(:clubes).through(:assocs) }
     it { is_expected.to have_many(:arbitragems).dependent(:destroy) }
+    it { is_expected.to have_many(:particips).dependent(:destroy) }
+    it { is_expected.to have_many(:equipes).through(:particips) }
+    it { is_expected.to have_many(:partidas).through(:particips) }
   end
 
   describe 'Validações' do
