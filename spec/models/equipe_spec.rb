@@ -27,6 +27,7 @@ RSpec.describe Equipe do
     it { is_expected.to have_many(:particips).dependent(:destroy) }
     it { is_expected.to have_many(:pessoas).through(:particips) }
     it { is_expected.to have_many(:partidas).through(:particips) }
+    it { is_expected.to have_many(:faltas).through(:particips) }
   end
 
   describe 'Validações' do

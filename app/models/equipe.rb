@@ -18,6 +18,7 @@ class Equipe < ApplicationRecord
   has_many :particips, dependent: :destroy
   has_many :pessoas, through: :particips
   has_many :partidas, through: :particips
+  has_many :faltas, through: :particips
 
   validates :nome, presence: true
 end

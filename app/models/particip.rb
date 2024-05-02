@@ -32,6 +32,8 @@ class Particip < ApplicationRecord
   belongs_to :equipe
   belongs_to :partida
 
+  has_many :faltas, dependent: :destroy
+
   validates :eh_coringa, exclusion: [nil]
   validates :pessoa_id, uniqueness: { scope: %i[equipe_id partida_id] }
 end

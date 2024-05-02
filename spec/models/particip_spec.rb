@@ -38,6 +38,7 @@ RSpec.describe Particip do
     it { is_expected.to belong_to(:pessoa) }
     it { is_expected.to belong_to(:equipe) }
     it { is_expected.to belong_to(:partida) }
+    it { is_expected.to have_many(:faltas).dependent(:destroy) }
   end
 
   describe 'Validações' do
