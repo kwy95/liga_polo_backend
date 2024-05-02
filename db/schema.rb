@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_02_012032) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_02_015524) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -85,9 +85,22 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_02_012032) do
     t.index ["nome"], name: "index_pessoas_on_nome"
   end
 
+  create_table "tematicos", force: :cascade do |t|
+    t.bigint "evento_id", null: false
+    t.bigint "equipe_id", null: false
+    t.string "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["equipe_id"], name: "index_tematicos_on_equipe_id"
+    t.index ["evento_id", "equipe_id"], name: "index_tematicos_on_evento_id_and_equipe_id", unique: true
+    t.index ["evento_id"], name: "index_tematicos_on_evento_id", unique: true
+  end
+
   add_foreign_key "assocs", "clubes"
   add_foreign_key "assocs", "pessoas"
   add_foreign_key "eventos", "ligas"
   add_foreign_key "fases", "eventos"
   add_foreign_key "partidas", "fases"
+  add_foreign_key "tematicos", "equipes"
+  add_foreign_key "tematicos", "eventos"
 end

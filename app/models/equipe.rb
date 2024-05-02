@@ -14,5 +14,7 @@
 #  index_equipes_on_nome  (nome)
 #
 class Equipe < ApplicationRecord
+  has_many :tematicos, dependent: :destroy
+
   validates :nome, presence: true
 end
