@@ -29,5 +29,6 @@ RSpec.describe Fase do
 
   describe 'Associações' do
     it { is_expected.to belong_to(:evento) }
+    it { is_expected.to have_many(:partidas).dependent(:destroy) }
   end
 end
