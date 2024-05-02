@@ -32,6 +32,7 @@ RSpec.describe Evento do
 
   describe 'Associações' do
     it { is_expected.to belong_to(:liga) }
+    it { is_expected.to have_many(:fases).dependent(:destroy) }
   end
 
   describe 'Validações' do
