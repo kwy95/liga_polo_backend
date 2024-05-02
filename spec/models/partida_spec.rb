@@ -35,6 +35,7 @@ RSpec.describe Partida do
     it { is_expected.to have_many(:equipes).through(:particips) }
     it { is_expected.to have_many(:jogadores).through(:particips).source(:pessoa) }
     it { is_expected.to have_many(:faltas).through(:particips) }
+    it { is_expected.to have_many(:gols).through(:particips) }
   end
 
   describe 'Validações' do

@@ -19,6 +19,7 @@ class Equipe < ApplicationRecord
   has_many :pessoas, through: :particips
   has_many :partidas, through: :particips
   has_many :faltas, through: :particips
+  has_many :gols, through: :particips
 
   validates :nome, presence: true
 end

@@ -25,6 +25,7 @@ class Pessoa < ApplicationRecord
   has_many :equipes, through: :particips
   has_many :partidas, through: :particips
   has_many :faltas, through: :particips
+  has_many :gols, through: :particips
 
   validates :nome, presence: true
   validates :eh_mtnb, exclusion: [nil]
