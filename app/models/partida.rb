@@ -26,6 +26,7 @@ class Partida < ApplicationRecord
   has_many :particips, dependent: :destroy
   has_many :equipes, through: :particips
   has_many :jogadores, through: :particips, source: :pessoa
+  has_many :faltas, through: :particips
 
   validates :ordem, uniqueness: { scope: :fase_id }
 end
