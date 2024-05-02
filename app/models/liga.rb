@@ -14,5 +14,7 @@
 #  index_ligas_on_nome  (nome) UNIQUE
 #
 class Liga < ApplicationRecord
+  has_many :eventos, dependent: :destroy
+
   validates :nome, presence: true, uniqueness: true
 end

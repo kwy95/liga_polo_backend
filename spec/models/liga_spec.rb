@@ -22,6 +22,10 @@ RSpec.describe Liga do
     expect(liga).to be_valid
   end
 
+  describe 'Associações' do
+    it { is_expected.to have_many(:eventos).dependent(:destroy) }
+  end
+
   describe 'Validações' do
     it { is_expected.to validate_presence_of(:nome) }
     it { expect(liga).to validate_uniqueness_of(:nome) }
