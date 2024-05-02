@@ -24,5 +24,7 @@
 class Evento < ApplicationRecord
   belongs_to :liga
 
+  has_many :fases, dependent: :destroy
+
   validates :nome, presence: true
 end
