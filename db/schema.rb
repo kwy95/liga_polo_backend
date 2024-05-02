@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_02_033651) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_02_045236) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -80,6 +80,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_02_033651) do
     t.index ["evento_id"], name: "index_fases_on_evento_id"
   end
 
+  create_table "gols", force: :cascade do |t|
+    t.bigint "particip_id", null: false
+    t.boolean "eh_contra", default: false, null: false
+    t.boolean "eh_gol_de_ouro", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["particip_id"], name: "index_gols_on_particip_id"
+  end
+
   create_table "ligas", force: :cascade do |t|
     t.string "nome", null: false
     t.datetime "created_at", null: false
@@ -136,6 +145,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_02_033651) do
   add_foreign_key "eventos", "ligas"
   add_foreign_key "faltas", "particips"
   add_foreign_key "fases", "eventos"
+  add_foreign_key "gols", "particips"
   add_foreign_key "particips", "equipes"
   add_foreign_key "particips", "partidas"
   add_foreign_key "particips", "pessoas"

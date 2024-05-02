@@ -33,6 +33,7 @@ class Particip < ApplicationRecord
   belongs_to :partida
 
   has_many :faltas, dependent: :destroy
+  has_many :gols, dependent: :destroy
 
   validates :eh_coringa, exclusion: [nil]
   validates :pessoa_id, uniqueness: { scope: %i[equipe_id partida_id] }

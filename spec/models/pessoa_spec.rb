@@ -32,6 +32,7 @@ RSpec.describe Pessoa do
     it { is_expected.to have_many(:equipes).through(:particips) }
     it { is_expected.to have_many(:partidas).through(:particips) }
     it { is_expected.to have_many(:faltas).through(:particips) }
+    it { is_expected.to have_many(:gols).through(:particips) }
   end
 
   describe 'Validações' do
