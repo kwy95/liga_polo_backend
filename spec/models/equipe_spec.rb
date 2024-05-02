@@ -22,6 +22,10 @@ RSpec.describe Equipe do
     expect(equipe).to be_valid
   end
 
+  describe 'Associações' do
+    it { is_expected.to have_many(:tematicos).dependent(:destroy) }
+  end
+
   describe 'Validações' do
     it { is_expected.to validate_presence_of(:nome) }
   end

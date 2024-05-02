@@ -1,6 +1,6 @@
-Total score (lower is better) = 76
+Total score (lower is better) = 72
 
    20.00: spec/models/clube_spec.rb
    20.00: spec/models/pessoa_spec.rb
-   18.00: spec/models/evento_spec.rb
-   18.00: spec/models/fase_spec.rb
+   16.00: spec/models/assoc_spec.rb
+   16.00: spec/models/tematico_spec.rb
