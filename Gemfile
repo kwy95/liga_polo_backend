@@ -53,6 +53,7 @@ group :development, :test do
   gem 'rubocop-factory_bot', '~> 2.25', require: false
   gem 'rubocop-rails', '~> 2.24', require: false
   gem 'rubocop-rspec', '~> 2.27', require: false
+  gem 'rubocop-rspec_rails', '~> 2.29', require: false
 end
 
 group :development do

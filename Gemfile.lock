@@ -289,6 +289,7 @@ DEPENDENCIES
   rubocop-factory_bot (~> 2.25)
   rubocop-rails (~> 2.24)
   rubocop-rspec (~> 2.27)
+  rubocop-rspec_rails (~> 2.29)
   shoulda-matchers (~> 6.2)
   tournament-system (~> 2)
   tzinfo-data
