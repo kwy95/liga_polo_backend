@@ -1,2 +1,5 @@
-Total score (lower is better) = 0
+Total score (lower is better) = 48
 
+   16.00: spec/models/arbitragem_spec.rb
+   16.00: spec/models/assoc_spec.rb
+   16.00: spec/models/tematico_spec.rb
