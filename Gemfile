@@ -2,10 +2,10 @@
 
 source 'https://rubygems.org'
 
-ruby '3.3.0'
+ruby '3.3.4'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem 'rails', '~> 7.1.2'
+gem 'rails', '~> 7.2.0'
 
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
@@ -37,8 +37,6 @@ gem 'bootsnap', require: false
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin Ajax possible
 # gem "rack-cors"
 
-gem 'tournament-system', '~> 2'
-
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri windows]
@@ -52,7 +50,8 @@ group :development, :test do
   gem 'rubocop', '~> 1.62', require: false
   gem 'rubocop-factory_bot', '~> 2.25', require: false
   gem 'rubocop-rails', '~> 2.24', require: false
-  gem 'rubocop-rspec', '~> 2.27', require: false
+  gem 'rubocop-rspec', '~> 3.0', require: false
+  gem 'rubocop-rspec_rails', '~> 2.29', require: false
 end
 
 group :development do
