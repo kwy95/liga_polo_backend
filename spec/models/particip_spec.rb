@@ -5,6 +5,7 @@
 # Table name: particips
 #
 #  id         :bigint           not null, primary key
+#  eh_casa    :boolean          default(TRUE), not null
 #  eh_coringa :boolean          default(FALSE), not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
