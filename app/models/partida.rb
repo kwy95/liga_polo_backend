@@ -30,4 +30,25 @@ class Partida < ApplicationRecord
   has_many :gols, through: :particips
 
   validates :ordem, uniqueness: { scope: :fase_id }
+
+  def equipe_casa
+    equipes.first
+  end
+
+  def equipe_visitante
+    equipes.last
+  end
+
+  def ganhador
+    return nil if gols.empty?
+
+    gols_casa = gols.where(equipe: equipe_casa).count
+    gols_visitante = gols.where(equipe: equipe_visitante).count
+
+    if gols_casa > gols_visitante
+      equipe_casa
+    elsif gols_casa < gols_visitante
+      equipe_visitante
+    end
+  end
 end
